@@ -94,7 +94,8 @@ df <- mutate(df, pvtHosp = ifelse(site == "Private Hospital", TRUE, FALSE))
 
 # 8. recode base heartrate into a binary variable
 
-df <- mutate(df, highHeart = ifelse(meanHeart > 71.95, TRUE, FALSE))
+meanBHR <- mean(df$baseHeart) # save mean heartrate
+df <- mutate(df, highHeart = ifelse(baseHeart > meanBHR, TRUE, FALSE))
 
 # ==========================================================================
 
